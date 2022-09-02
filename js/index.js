@@ -6,11 +6,14 @@ const loadAllMenu = async () => {
 };
 
 const displayAllMenu = (menu) => {
+  const secondNavContainer = document.getElementById("second-navbar");
   console.log(menu);
-    menu.forEach(element => {
-        console.log(element.category_name);
-    });
-
+  menu.forEach((element) => {
+    console.log(element.category_name);
+    const li = document.createElement("li");
+    li.innerText = element.category_name;
+    secondNavContainer.appendChild(li);
+  });
 };
 
 loadAllMenu();
