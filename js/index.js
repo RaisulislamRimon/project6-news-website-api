@@ -27,7 +27,13 @@ const loadNewsById = (category_id) => {
 };
 
 const displayNewsById = (news) => {
-  // console.log(news);
+  console.log(news);
+  console.log(news.data.length);
+  const noDataMsg = document.getElementById("no-data-msg");
+  if (news.data.length === 0) {
+    noDataMsg.classList.remove("hidden");
+    console.log("No Data Found");
+  }
   const newsArray = news.data;
   // console.log(newsArray);
   // sorting the post by total view count
@@ -38,7 +44,7 @@ const displayNewsById = (news) => {
     // console.log(element);
     // element.sort((a, b) => b.data[0].total_view - a.data[0].total_view);
     const { thumbnail_url, title, details, author, total_view, _id } = element;
-    console.log(total_view);
+    // console.log(total_view);
 
     const newsCard = document.createElement("div");
     newsCard.classList.add("mb-8");
@@ -147,7 +153,7 @@ const displayReadMoreModal = (news) => {
   </p>
   <p class="py-4">
     <span class="font-medium">Author : </span> 
-    ${author.name}
+    ${author.name ? author.name : "No data available"}
   </p>
   <p class="py-4">
     <span class="font-medium">Rating : </span>
@@ -157,7 +163,7 @@ const displayReadMoreModal = (news) => {
     others_info.is_trending ? "Yes" : "No"
   }</p>
   <p class="py-4">
-    <span class="font-medium">Total View : </span>${total_view}
+    <span class="font-medium">Total View : </span>${total_view ? total_view : "No data available"}
   </p>
   <div class="modal-action">
     <label for="my-modal-6" class="btn">Close</label>
