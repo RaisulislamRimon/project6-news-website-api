@@ -38,13 +38,13 @@ const displayNewsById = (news) => {
     const newsCard = document.createElement("div");
     newsCard.classList.add("mb-8");
     newsCard.innerHTML = `
-        <div class="card card-side bg-base-100 shadow-xl p-4">
+        <div class="card card-side bg-base-100 shadow-xl p-4 flex flex-col md:flex-none	md:flex-row	">
           <img
             class="rounded-xl h-80	"
             src="${thumbnail_url}"
             alt="Movie"
           />
-          <div class="card-body">
+          <div class="card-body ">
             <h2 class="card-title text-2xl">
               ${title}
             </h2>
@@ -123,10 +123,10 @@ const readMoreModal = (_id) => {
 
 const displayReadMoreModal = (news) => {
   console.log(news);
-  const readMoreModal = document.getElementById('read-more-modal')
-   const modalDiv =  readMoreModal.createElement('div')
-    modalDiv.classList.add('modal')
-    modalDiv.innerHTML = `
+  const readMoreModal = document.getElementById("read-more-modal");
+  const modalDiv = readMoreModal.createElement("div");
+  modalDiv.classList.add("modal");
+  modalDiv.innerHTML = `
     <input type="checkbox" id="my-modal-6" class="modal-toggle" />
     <div class="modal modal-bottom sm:modal-middle">
       <div class="modal-box">
@@ -159,7 +159,7 @@ const displayReadMoreModal = (news) => {
       </div>
     </div>
     
-    `
+    `;
 };
 
 loadAllMenu();
