@@ -66,7 +66,7 @@ const displayNewsById = (news) => {
                   </div>
                   <div class="mx-3">
                     <p class="font-bold">${
-                      author.name ? author.name : "info not available"
+                      author.name ? author.name : "No data available"
                     }</p>
                     <p>${author.published_date}</p>
                   </div>
@@ -76,7 +76,7 @@ const displayNewsById = (news) => {
                     visibility
                   </span>
                   <span class="mx-2 font-bold text-lg">${
-                    total_view ? total_view : "n/a"
+                    total_view ? total_view : "No data available"
                   }</span>
                 </div>
                 <div class="rating mt-4">
