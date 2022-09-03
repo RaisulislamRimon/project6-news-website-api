@@ -33,8 +33,9 @@ const displayNewsById = (news) => {
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
   newsArray.forEach((element) => {
-    console.log(element);
+    // console.log(element);
     const { thumbnail_url, title, details, author, total_view, _id } = element;
+    console.log(_id);
     const newsCard = document.createElement("div");
     newsCard.classList.add("mb-8");
     newsCard.innerHTML = `
@@ -45,7 +46,7 @@ const displayNewsById = (news) => {
             alt="Movie"
           />
           <div class="card-body ">
-            <h2 class="card-title text-2xl">
+            <h2 class="card-title text-2xl font-medium text-black mb-4">
               ${title}
             </h2>
             <p class="w-full md:w-auto">
@@ -114,7 +115,7 @@ const displayNewsById = (news) => {
 
 const readMoreModal = (_id) => {
   console.log(_id);
-  const url = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`;
+  const url = `https://openapi.programming-hero.com/api/news/${_id}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayReadMoreModal(data))
@@ -123,43 +124,49 @@ const readMoreModal = (_id) => {
 
 const displayReadMoreModal = (news) => {
   console.log(news);
-  const readMoreModal = document.getElementById("read-more-modal");
-  const modalDiv = readMoreModal.createElement("div");
-  modalDiv.classList.add("modal");
+  console.log(news.data[0].title);
+  const {
+    title,
+    image_url,
+    details,
+    author,
+    rating,
+    others_info,
+    total_view,
+    _id,
+  } = news.data[0];
+  const modalContainer = document.getElementById("modal-container");
+  modalContainer.innerHTML = ``;
+  const modalDiv = document.createElement("div");
+  modalDiv.classList.add("modal-box");
   modalDiv.innerHTML = `
-    <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-    <div class="modal modal-bottom sm:modal-middle">
-      <div class="modal-box">
-        <h3 class="font-bold text-lg">
-          Biden Pledges Nearly $3 Billion To Ukraine In Largest U.S. Military
-          Aid Package Yet
-        </h3>
-        <img
-          class="w-full py-4"
-          src="https://i.ibb.co/M23fhxm/unsplash-Eh-Tc-C9s-YXsw.png"
-          alt=""
-        />
-        <p class="py-4">
-          Wednesday, August 24, 2022 | Tag Cloud Tags: Biden, EU, Euro,
-          Europe, Joe Biden, Military, News, Russia, Security, UK, Ukraine,
-          United States, Worthy News (Worthy News) – U.S. President Joe Biden
-          has announced nearly $3 billion in new U.S. military aid for Kyiv as
-          Ukraine marked its independence day...
-        </p>
-        <p class="py-4 ">
-          <span class="font-medium">Published Date : </span> 03 September 2022
-        </p>
-        <p class="py-4"><span class="font-medium">Author : </span>name here</p>
-        <p class="py-4"><span class="font-medium">Review : </span>Excellent</p>
-        <p class="py-4"><span class="font-medium">Trending : </span>Yes</p>
-        <p class="py-4"><span class="font-medium">Total view : </span>1199</p>
-        <div class="modal-action">
-          <label for="my-modal-6" class="btn">Close</label>
-        </div>
-      </div>
-    </div>
-    
-    `;
+  <h3 id="modal-title" class="font-bold text-lg">${title}</h3>
+  <img class="w-full py-4" src="${image_url}" alt="" />
+  <p class="py-4">
+    ${details}
+  </p>
+  <p class="py-4">
+    <span class="font-medium">Published Date : </span> 
+    ${author.published_date}
+  </p>
+  <p class="py-4">
+    <span class="font-medium">Author : </span> 
+    ${author.name}
+  </p>
+  <p class="py-4">
+    <span class="font-medium">Rating : </span>
+    ${rating.badge}
+  </p>
+  <p class="py-4"><span class="font-medium">Trending : </span>${others_info.is_trending ? "Yes" : "No"}</p>
+  <p class="py-4">
+    <span class="font-medium">Total view : </span>${total_view}
+  </p>
+  <div class="modal-action">
+    <label for="my-modal-6" class="btn">Close</label>
+  </div>
+
+  `;
+  modalContainer.appendChild(modalDiv);
 };
 
 loadAllMenu();
