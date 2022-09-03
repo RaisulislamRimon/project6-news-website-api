@@ -53,7 +53,6 @@ const defaultCategory = document.getElementById("default-category");
 
 // update default category
 const updateDefaultCategory = (category_id) => {
-  console.log(category_id);
   defaultCategory.innerText = ``;
   fetch(`https://openapi.programming-hero.com/api/news/categories`)
     .then((res) => res.json())
@@ -70,8 +69,6 @@ const updateDefaultCategory = (category_id) => {
 // display news by category_id
 const displayNewsById = (news) => {
   const newsArray = news.data;
-  // console.log(news.data);
-
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
 
