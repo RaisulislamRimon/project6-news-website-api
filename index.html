@@ -18,7 +18,9 @@
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    <!-- google icon cdn  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
   <body>
     <section>
       <!-- 1st top navbar  -->
@@ -91,8 +93,18 @@
                     <p>Today's date: 03 September 2022</p>
                   </div>
                 </div>
-                <div>
-                  
+                <div class="flex mt-4">
+                  <span class="material-symbols-outlined">
+                    visibility
+                    </span>
+                    <span class="mx-2">1.5M</span>
+                </div>
+                <div class="rating mt-4">
+                  <input type="radio" name="rating-1" class="mask mask-star" />
+                  <input type="radio" name="rating-1" class="mask mask-star" checked />
+                  <input type="radio" name="rating-1" class="mask mask-star" />
+                  <input type="radio" name="rating-1" class="mask mask-star" />
+                  <input type="radio" name="rating-1" class="mask mask-star" />
                 </div>
                 <button class="btn btn-primary">Read More </button>
               </div>
