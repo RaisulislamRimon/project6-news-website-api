@@ -98,7 +98,13 @@ const displayNewsById = (news) => {
                     <p class="font-bold">${
                       author.name ? author.name : "No data available"
                     }</p>
-                    <p>${author.published_date}</p>
+                    <p>
+                    ${
+                      !author.published_date || author.published_date === null
+                        ? "No data available"
+                        : author.published_date
+                    }
+                    </p>
                   </div>
                 </div>
                 <div class="flex mt-4">
@@ -170,15 +176,20 @@ const displayReadMoreModal = (news) => {
   </p>
   <p class="py-4">
     <span class="font-medium">Published Date : </span> 
-    ${author.published_date}
+    ${
+      !author.published_date || author.published_date === null
+        ? "No data available"
+        : author.published_date
+    }
   </p>
   <p class="py-4">
     <span class="font-medium">Author : </span> 
     ${author.name ? author.name : "No data available"}
-  </p>
+    </p>
+    <img src="${author.img}" class="mask mask-circle w-24 py-4 " alt="" />
   <p class="py-4">
     <span class="font-medium">Rating : </span>
-    ${rating.badge}
+    ${rating.badge} , ${rating.number}
   </p>
   <p class="py-4"><span class="font-medium">Trending : </span>${
     others_info.is_trending ? "Yes" : "No"
