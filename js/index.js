@@ -36,6 +36,8 @@ const displayNewsById = (news) => {
   if (news.data.length === 0) {
     noDataMsg.classList.remove("hidden");
     console.log("No Data Found");
+  } else {
+    noDataMsg.classList.add("hidden");
   }
   const newsArray = news.data;
   console.log(newsArray);
