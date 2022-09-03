@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog-News Website API</title>
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="images/news-favicon.jpg"
+      type="image/x-icon"
+    />
+    <!-- daisy ui & tailwindcss cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- google icon cdn  -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <!-- header  -->
+    <header>
+      <!-- 1st top navbar  -->
+      <div class="navbar bg-base-100">
+        <div class="flex-1">
+          <a class="btn btn-ghost normal-case text-xl bg-green-300"
+          href="index.html"  
+          >News Website API</a
+          >
+        </div>
+        <div class="flex-none">
+          <ul class="menu menu-horizontal p-0">
+            <li><a href="index.html">News</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li tabindex="0">
+              <a>
+                DOC
+                <svg
+                  class="fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+                  />
+                </svg>
+              </a>
+              <ul class="p-2 bg-base-100">
+                <li><a>HTML5</a></li>
+                <li><a>CSS3</a></li>
+                <li><a>Javascript</a></li>
+                <li><a>API</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <h1 class="text-3xl font-bold text-center my-4 underline">
+        This is Blog section of News Website API
+      </h1>
+    </header>
+
+    <!-- main section  -->
+    <main>
+      <section class="container mx-auto mt-10">
+        <!-- 1st question  -->
+        <div
+          tabindex="0"
+          class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+        >
+          <div class="collapse-title text-xl font-medium">
+            Var, Let, and Const - what's the difference?
+          </div>
+          <div class="collapse-content">
+            <p>
+              The differences between var, let, and const variable declaration
+              in JavaScript include: Variables declared with var and const are
+              scoped to the immediate function body. Variables declared with the
+              var keyword are hoisted. Hoisting means that the variable can be
+              accessed in their enclosing scope even before they are declared.
+              Variables declared with the let keyword are block-scoped, which
+              means the variables will have scope to the immediate enclosing
+              block.
+            </p>
+          </div>
+        </div>
+        <!-- 2nd question  -->
+        <div
+          tabindex="0"
+          class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+        >
+          <div class="collapse-title text-xl font-medium">
+            What are the differences between regular functions and arrow
+            functions?
+          </div>
+          <div class="collapse-content">
+            <p>
+              There are two major benefits of using Arrow functions. One is that
+              it's a shorter syntax and thus requires less code. The main
+              benefit is that it removes the several pain points associated with
+              the this operator. In JS arguments array in functions is a special
+              object that can be used to get all the arguments passed to the
+              function. Similar to this, arrow functions do not have their own
+              binding to a arguments object, they are bound to arguments of
+              enclosing scope.Arrow functions do not have their own this value.
+              The value of this inside an arrow function is always inherited
+              from the enclosing scope.
+            </p>
+          </div>
+        </div>
+        <!-- 3rd question  -->
+        <div
+          tabindex="0"
+          class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+        >
+          <div class="collapse-title text-xl font-medium">
+            What are the differences between map, foreach, filter, find?
+          </div>
+          <div class="collapse-content">
+            <p>
+              The first difference between map() and forEach() is the returning
+              value. The forEach() method returns undefined and map() returns a
+              new array with the transformed elements. Even if they do the same
+              job, the returning value remains different. The second difference
+              between these array methods is the fact that map() is chainable.
+              This means that you can attach reduce(), sort(), filter() and so
+              on after performing a map() method on an array. That's something
+              you can't do with forEach() because, as you might guess, it
+              returns undefined. In general, the word "mutate" means change,
+              alternate, modify or transform. And in the JavaScript world it has
+              the same meaning. A mutable object is an object whose state can be
+              modified after it is created. forEach() does not mutate the array
+              on which it is called. (However, callback may do so). map() does
+              not mutate the array on which it is called (although callback, if
+              invoked, may do so).
+            </p>
+          </div>
+        </div>
+        <!-- 4th question  -->
+        <div
+          tabindex="0"
+          class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+        >
+          <div class="collapse-title text-xl font-medium">
+            Why will we use template string in javascript?
+          </div>
+          <div class="collapse-content">
+            <p>
+              Template strings are a powerful feature of modern JavaScript
+              released in ES6. It lets us insert/interpolate variables and
+              expressions into strings without needing to concatenate like in
+              older versions of JavaScript. It allows us to create strings that
+              are complex and contain dynamic elements. In certain cases,
+              nesting a template is the easiest (and perhaps more readable) way
+              to have configurable strings. Within a backtick-delimited
+              template, it is simple to allow inner backticks by using them
+              inside an ${expression} placeholder within the template.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

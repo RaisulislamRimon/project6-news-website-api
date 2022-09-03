@@ -32,13 +32,14 @@
         <div class="navbar bg-base-100">
           <div class="flex-1">
             <a class="btn btn-ghost normal-case text-xl bg-green-300"
-              >News Website API</a
+            href="index.html"  
+            >News Website API</a
             >
           </div>
           <div class="flex-none">
             <ul class="menu menu-horizontal p-0">
-              <li><a>News</a></li>
-              <li><a>Blog</a></li>
+              <li><a href="index.html">News</a></li>
+              <li><a href="blog.html">Blog</a></li>
               <li tabindex="0">
                 <a>
                   DOC
@@ -75,7 +76,7 @@
         <!-- news found title section -->
         <div class="container mx-auto">
           <h3 class="text-xl font-medium">
-            <span id="item-number">0</span> items found for category 
+            <span id="item-number">0</span> items found for category
             <span id="default-category"></span>
           </h3>
         </div>
@@ -88,13 +89,13 @@
     </section>
 
     <!-- error message -->
-    <section class="container mx-auto">
+    <section class="container mx-auto mb-10">
       <div class="">
         <button
           id="no-data-msg"
           class="btn btn-block btn-error text-white pt-14 pb-20 text-xl hidden"
         >
-          No data available
+          No News available
         </button>
       </div>
     </section>

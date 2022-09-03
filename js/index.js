@@ -1,10 +1,15 @@
-const loadAllMenu = async () => {
+// load All Menu
+const loadAllMenu = () => {
   const url = `https://openapi.programming-hero.com/api/news/categories`;
-  const response = await fetch(url);
-  const data = await response.json();
-  displayAllMenu(data.data.news_category);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      displayAllMenu(data.data.news_category);
+    })
+    .catch((error) => console.log(error));
 };
 
+// display All Menu
 const displayAllMenu = (menu) => {
   const secondNavContainer = document.getElementById("second-navbar");
   menu.forEach((element) => {
@@ -16,6 +21,7 @@ const displayAllMenu = (menu) => {
   });
 };
 
+// load all news by category_id
 const loadNewsById = (category_id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   fetch(url)
@@ -26,8 +32,10 @@ const loadNewsById = (category_id) => {
     .catch((error) => console.log(error));
 };
 
+// default Category
 const defaultCategory = document.getElementById("default-category");
 
+// update default category
 const updateDefaultCategory = (category_id) => {
   console.log(category_id);
   defaultCategory.innerText = ``;
@@ -39,9 +47,11 @@ const updateDefaultCategory = (category_id) => {
         (category) => category.category_id === category_id
       );
       defaultCategory.innerText = foundCategoryName.category_name;
-    });
+    })
+    .catch((error) => console.log(error));
 };
 
+// display news by category_id
 const displayNewsById = (news) => {
   const newsArray = news.data;
   // console.log(news.data);
@@ -153,6 +163,7 @@ const displayNewsById = (news) => {
   });
 };
 
+// read more modal button on click function
 const readMoreModal = (_id) => {
   const url = `https://openapi.programming-hero.com/api/news/${_id}`;
   fetch(url)
@@ -161,6 +172,7 @@ const readMoreModal = (_id) => {
     .catch((err) => console.log(err));
 };
 
+// display read more modal function
 const displayReadMoreModal = (news) => {
   const { title, image_url, details, author, rating, others_info, total_view } =
     news.data[0];
@@ -207,5 +219,6 @@ const displayReadMoreModal = (news) => {
   modalContainer.appendChild(modalDiv);
 };
 
+// default function calling when the page is loaded
 loadAllMenu();
 loadNewsById("01");
