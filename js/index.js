@@ -7,12 +7,7 @@ const loadAllMenu = async () => {
 
 const displayAllMenu = (menu) => {
   const secondNavContainer = document.getElementById("second-navbar");
-  // console.log(menu);
   menu.forEach((element) => {
-    console.log(element.category_name);
-
-    
-
     const li = document.createElement("li");
     li.innerHTML = `
       <a onclick="loadNewsById('${element.category_id}')" class="btn btn-ghost normal-case text-lg">${element.category_name}</a>
@@ -22,47 +17,58 @@ const displayAllMenu = (menu) => {
 };
 
 const loadNewsById = (category_id) => {
-  // console.log(category_id);
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayNewsById(data));
+    .then((data) => {
+      displayNewsById(data);
+    })
+    .catch((error) => console.log(error));
+};
+
+const defaultCategory = document.getElementById("default-category");
+
+const updateDefaultCategory = (category_id) => {
+  console.log(category_id);
+  defaultCategory.innerText = ``;
+  fetch(`https://openapi.programming-hero.com/api/news/categories`)
+    .then((res) => res.json())
+    .then((data) => {
+      const categoriesArray = data.data.news_category;
+      const foundCategoryName = categoriesArray.find(
+        (category) => category.category_id === category_id
+      );
+      defaultCategory.innerText = foundCategoryName.category_name;
+    });
 };
 
 const displayNewsById = (news) => {
-  console.log(news);
-  // console.log(news.data.length);
-  const noDataMsg = document.getElementById("no-data-msg");
-  if (news.data.length === 0) {
-    noDataMsg.classList.remove("hidden");
-    console.log("No Data Found");
-  } else {
-    noDataMsg.classList.add("hidden");
-  }
   const newsArray = news.data;
-  console.log(newsArray);
-  // sorting the post by total view count
-  newsArray.sort((a, b) => b.total_view - a.total_view);
+  // console.log(news.data);
+
+  const newsContainer = document.getElementById("news-container");
+  newsContainer.innerHTML = "";
 
   // showing total found news count in the UI
   const itemNumber = document.getElementById("item-number");
   itemNumber.innerText = newsArray.length;
 
-  // // showing the found news category in the UI
-  // const categoryName =  document.getElementById('category-name')
-  // categoryName.innerText = newsArray[0].category_name;
+  const noDataMsg = document.getElementById("no-data-msg");
+  if (news.data.length === 0) {
+    noDataMsg.classList.remove("hidden");
+    defaultCategory.innerText = newsArray
+    return;
+  } else {
+    noDataMsg.classList.add("hidden");
+  }
+  const { _id, category_id } = news.data[0];
+  updateDefaultCategory(category_id);
 
-  // // showing the found news category in the UI
-  // const categoryName = document.getElementById("category-name");
-  // categoryName.innerText = element.category_name;
+  // sorting the post by total view count
+  newsArray.sort((a, b) => b.total_view - a.total_view);
 
-  const newsContainer = document.getElementById("news-container");
-  newsContainer.innerHTML = "";
   newsArray.forEach((element) => {
-    // console.log(element);
-    // element.sort((a, b) => b.data[0].total_view - a.data[0].total_view);
     const { thumbnail_url, title, details, author, total_view, _id } = element;
-    // console.log(total_view);
 
     const newsCard = document.createElement("div");
     newsCard.classList.add("mb-8");
@@ -142,7 +148,6 @@ const displayNewsById = (news) => {
 };
 
 const readMoreModal = (_id) => {
-  // console.log(_id);
   const url = `https://openapi.programming-hero.com/api/news/${_id}`;
   fetch(url)
     .then((res) => res.json())
@@ -151,8 +156,6 @@ const readMoreModal = (_id) => {
 };
 
 const displayReadMoreModal = (news) => {
-  // console.log(news);
-  // console.log(news.data[0].title);
   const { title, image_url, details, author, rating, others_info, total_view } =
     news.data[0];
   const modalContainer = document.getElementById("modal-container");
