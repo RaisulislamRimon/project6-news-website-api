@@ -9,7 +9,10 @@ const displayAllMenu = (menu) => {
   const secondNavContainer = document.getElementById("second-navbar");
   // console.log(menu);
   menu.forEach((element) => {
-    // console.log(element.category_name);
+    console.log(element.category_name);
+
+    
+
     const li = document.createElement("li");
     li.innerHTML = `
       <a onclick="loadNewsById('${element.category_id}')" class="btn btn-ghost normal-case text-lg">${element.category_name}</a>
@@ -28,16 +31,29 @@ const loadNewsById = (category_id) => {
 
 const displayNewsById = (news) => {
   console.log(news);
-  console.log(news.data.length);
+  // console.log(news.data.length);
   const noDataMsg = document.getElementById("no-data-msg");
   if (news.data.length === 0) {
     noDataMsg.classList.remove("hidden");
     console.log("No Data Found");
   }
   const newsArray = news.data;
-  // console.log(newsArray);
+  console.log(newsArray);
   // sorting the post by total view count
   newsArray.sort((a, b) => b.total_view - a.total_view);
+
+  // showing total found news count in the UI
+  const itemNumber = document.getElementById("item-number");
+  itemNumber.innerText = newsArray.length;
+
+  // // showing the found news category in the UI
+  // const categoryName =  document.getElementById('category-name')
+  // categoryName.innerText = newsArray[0].category_name;
+
+  // // showing the found news category in the UI
+  // const categoryName = document.getElementById("category-name");
+  // categoryName.innerText = element.category_name;
+
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
   newsArray.forEach((element) => {
@@ -163,7 +179,9 @@ const displayReadMoreModal = (news) => {
     others_info.is_trending ? "Yes" : "No"
   }</p>
   <p class="py-4">
-    <span class="font-medium">Total View : </span>${total_view ? total_view : "No data available"}
+    <span class="font-medium">Total View : </span>${
+      total_view ? total_view : "No data available"
+    }
   </p>
   <div class="modal-action">
     <label for="my-modal-6" class="btn">Close</label>
