@@ -11,7 +11,9 @@ const displayAllMenu = (menu) => {
   menu.forEach((element) => {
     console.log(element.category_name);
     const li = document.createElement("li");
-    li.innerText = element.category_name;
+    li.innerHTML = `
+      <a class="btn btn-ghost normal-case text-lg">${element.category_name}</a>
+    `
     secondNavContainer.appendChild(li);
   });
 };

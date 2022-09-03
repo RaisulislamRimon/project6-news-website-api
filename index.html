@@ -20,18 +20,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <!-- 1st top navbar  -->
     <section>
+      <!-- 1st top navbar  -->
       <div class="navbar bg-base-100">
         <div class="flex-1">
-          <a class="btn btn-ghost normal-case text-xl">News Website API</a>
+          <a class="btn btn-ghost normal-case text-xl bg-green-300"
+            >News Website API</a
+          >
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal p-0">
             <li><a>News</a></li>
+            <li><a>Blog</a></li>
             <li tabindex="0">
               <a>
-                Blog
+                DOCUMENTATION
                 <svg
                   class="fill-current"
                   xmlns="http://www.w3.org/2000/svg"
@@ -51,11 +54,20 @@
                 <li><a>API</a></li>
               </ul>
             </li>
-            <li><a>About us</a></li>
           </ul>
         </div>
       </div>
       <div class="divider"></div>
+      <!-- 2nd top navbar  -->
+      <div class="  ">
+        <!-- <ul class=" grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12"> -->
+        <!-- <ul id="second-navbar" class="   grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8"> -->
+        <ul id="second-navbar" class="navbar-center grid md:grid-cols-3 lg:grid-cols-8">
+          <!-- <li><a class="btn btn-ghost normal-case text-xl">Item 1</a></li> -->
+        </ul>
+      </div>
     </section>
+
+    <script src="js/index.js"></script>
   </body>
 </html>
