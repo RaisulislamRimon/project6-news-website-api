@@ -56,7 +56,7 @@ const displayNewsById = (news) => {
   const noDataMsg = document.getElementById("no-data-msg");
   if (news.data.length === 0) {
     noDataMsg.classList.remove("hidden");
-    defaultCategory.innerText = newsArray
+    defaultCategory.innerText = newsArray;
     return;
   } else {
     noDataMsg.classList.add("hidden");
