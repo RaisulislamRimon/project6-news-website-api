@@ -33,9 +33,9 @@ const displayNewsById = (news) => {
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
   newsArray.forEach((element) => {
-    // console.log(element);
+    console.log(element);
     const { thumbnail_url, title, details, author, total_view, _id } = element;
-    console.log(_id);
+    // console.log(total_view);
     const newsCard = document.createElement("div");
     newsCard.classList.add("mb-8");
     newsCard.innerHTML = `
@@ -114,7 +114,7 @@ const displayNewsById = (news) => {
 };
 
 const readMoreModal = (_id) => {
-  console.log(_id);
+  // console.log(_id);
   const url = `https://openapi.programming-hero.com/api/news/${_id}`;
   fetch(url)
     .then((res) => res.json())
@@ -123,24 +123,16 @@ const readMoreModal = (_id) => {
 };
 
 const displayReadMoreModal = (news) => {
-  console.log(news);
-  console.log(news.data[0].title);
-  const {
-    title,
-    image_url,
-    details,
-    author,
-    rating,
-    others_info,
-    total_view,
-    _id,
-  } = news.data[0];
+  // console.log(news);
+  // console.log(news.data[0].title);
+  const { title, image_url, details, author, rating, others_info, total_view } =
+    news.data[0];
   const modalContainer = document.getElementById("modal-container");
   modalContainer.innerHTML = ``;
   const modalDiv = document.createElement("div");
   modalDiv.classList.add("modal-box");
   modalDiv.innerHTML = `
-  <h3 id="modal-title" class="font-bold text-lg">${title}</h3>
+  <h3 id="modal-title" class="font-bold text-xl">${title}</h3>
   <img class="w-full py-4" src="${image_url}" alt="" />
   <p class="py-4">
     ${details}
@@ -157,9 +149,11 @@ const displayReadMoreModal = (news) => {
     <span class="font-medium">Rating : </span>
     ${rating.badge}
   </p>
-  <p class="py-4"><span class="font-medium">Trending : </span>${others_info.is_trending ? "Yes" : "No"}</p>
+  <p class="py-4"><span class="font-medium">Trending : </span>${
+    others_info.is_trending ? "Yes" : "No"
+  }</p>
   <p class="py-4">
-    <span class="font-medium">Total view : </span>${total_view}
+    <span class="font-medium">Total View : </span>${total_view}
   </p>
   <div class="modal-action">
     <label for="my-modal-6" class="btn">Close</label>
