@@ -1,5 +1,6 @@
 // load All Menu
 const loadAllMenu = () => {
+  spinnerShow();
   const url = `https://openapi.programming-hero.com/api/news/categories`;
   fetch(url)
     .then((res) => res.json())
@@ -7,6 +8,18 @@ const loadAllMenu = () => {
       displayAllMenu(data.data.news_category);
     })
     .catch((error) => console.log(error));
+};
+
+// spinner show
+const spinnerShow = () => {
+  const spinner = document.getElementById("spinner");
+  spinner.classList.remove("hidden");
+};
+
+// spinner hide
+const spinnerHidden = () => {
+  const spinner = document.getElementById("spinner");
+  spinner.classList.add("hidden");
 };
 
 // display All Menu
@@ -19,14 +32,17 @@ const displayAllMenu = (menu) => {
     `;
     secondNavContainer.appendChild(li);
   });
+  spinnerHidden();
 };
 
 // load all news by category_id
 const loadNewsById = (category_id) => {
+  spinnerShow();
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      spinnerHidden();
       displayNewsById(data);
     })
     .catch((error) => console.log(error));
@@ -165,6 +181,7 @@ const displayNewsById = (news) => {
 
 // read more modal button on click function
 const readMoreModal = (_id) => {
+  spinnerShow();
   const url = `https://openapi.programming-hero.com/api/news/${_id}`;
   fetch(url)
     .then((res) => res.json())
@@ -217,6 +234,7 @@ const displayReadMoreModal = (news) => {
 
   `;
   modalContainer.appendChild(modalDiv);
+  spinnerHidden();
 };
 
 // default function calling when the page is loaded
