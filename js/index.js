@@ -30,12 +30,16 @@ const displayNewsById = (news) => {
   // console.log(news);
   const newsArray = news.data;
   // console.log(newsArray);
+  // sorting the post by total view count
+  newsArray.sort((a, b) => b.total_view - a.total_view);
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
   newsArray.forEach((element) => {
-    console.log(element);
+    // console.log(element);
+    // element.sort((a, b) => b.data[0].total_view - a.data[0].total_view);
     const { thumbnail_url, title, details, author, total_view, _id } = element;
-    // console.log(total_view);
+    console.log(total_view);
+
     const newsCard = document.createElement("div");
     newsCard.classList.add("mb-8");
     newsCard.innerHTML = `
