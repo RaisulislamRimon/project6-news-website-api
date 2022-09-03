@@ -28,8 +28,11 @@ const loadNewsById = (category_id) => {
 
 const displayNewsById = (news) => {
   const newsArray = news.data;
+  const newsContainer = document.getElementById("news-container");
   newsArray.forEach(element => {
       console.log(element);
+      const newsCard = document.createElement("div");
+      
   });
 };
 
